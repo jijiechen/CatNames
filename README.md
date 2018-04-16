@@ -9,6 +9,16 @@ The CatNames Practice
 This is a coding kata using TDD, refactoring based on .NET Core. It practices a simple Web API consuming scenario and exposes service with several ways, including a console applicaiton with dependency injection support and a web application.
 
 
+## Getting started
+
+Before starting, please confirm you have [.NET Core 2](https://www.microsoft.com/net/download/) installed.
+
+```sh
+ $ dotnet restore
+ $ cd CatNames
+ $ dotnet run
+```
+
 
 ## License
 CatNames is Licensed under the [MIT License](https://opensource.org/licenses/MIT).

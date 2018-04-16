@@ -12,7 +12,7 @@ namespace CatNames.Tests
             var jsonFetcher = new JsonFetcher(requester);
             
             jsonFetcher.Fetch<object>("url://dummy");
-            Assert.Equal("url://dummy", requester.Requestedstring);
+            Assert.Equal("url://dummy", requester.RequestedUri);
         }
         
         [Fact]

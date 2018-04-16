@@ -13,10 +13,10 @@ namespace CatNames.Tests
 
         public string Request(string uri)
         {
-            this.Requestedstring = uri;
+            this.RequestedUri = uri;
             return _response;
         }
 
-        public string Requestedstring { get; private set; }
+        public string RequestedUri { get; private set; }
     }
 }

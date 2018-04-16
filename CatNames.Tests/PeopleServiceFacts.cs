@@ -15,7 +15,7 @@ namespace CatNames.Tests
 
             peopleService.GetPeople();
             
-            Assert.Equal("https://agl-developer-test.azurewebsites.net/people.json", requester.Requestedstring);
+            Assert.Equal("https://agl-developer-test.azurewebsites.net/people.json", requester.RequestedUri);
         }
         
         
