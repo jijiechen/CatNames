@@ -1,4 +1,4 @@
-namespace CatNames
+namespace CatNames.Providers
 {
     public interface IRequester
     {

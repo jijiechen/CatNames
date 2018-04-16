@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CatNames.Models;
 using Xunit;
 
 namespace CatNames.Tests
@@ -9,22 +10,22 @@ namespace CatNames.Tests
         [Fact]
         public void ShouldPrintPet()
         {
-            var pet = new PetDto
+            var pet = new Pet
             {
                 name = "Docy",
                 type = "Cat"
             };
             
-            Assert.Equal("  • Docy", PetService.PrintOwner(pet));
+            Assert.Equal("  • Docy", PetService.PrintPet(pet));
         }
         
         
         [Fact]
         public void ShouldPrintPetOwnerGender()
         {
-            var pets = new List<PetDto>()
+            var pets = new List<Pet>()
             {
-                new PetDto
+                new Pet
 
                 {
                     name = "Docy",
@@ -40,16 +41,16 @@ namespace CatNames.Tests
         [Fact]
         public void ShouldPrintMultiplePetsInalphabeticalOrderWithSameOwnerGender()
         {
-            var pets = new List<PetDto>()
+            var pets = new List<Pet>()
             {
-                new PetDto
+                new Pet
 
                 {
                     name = "Docy",
                     ownerGender = "Female",
                     type = "Cat"
                 },
-                new PetDto
+                new Pet
                 {
                     name = "Amy",
                     ownerGender = "Female",
@@ -64,16 +65,16 @@ namespace CatNames.Tests
         [Fact]
         public void ShouldPrintMultiplePetsWithDifferentOwnerGenders()
         {
-            var pets = new List<PetDto>()
+            var pets = new List<Pet>()
             {
-                new PetDto
+                new Pet
 
                 {
                     name = "Docy",
                     ownerGender = "Female",
                     type = "Cat"
                 },
-                new PetDto
+                new Pet
                 {
                     name = "Amy",
                     ownerGender = "Male",
@@ -89,36 +90,36 @@ namespace CatNames.Tests
         [Fact]
         public void ShouldPrintMultiplePetsFromPeople()
         {
-            var people = new List<Person>()
+            var people = new List<PersonDataModel>()
             {
-                new Person()
+                new PersonDataModel()
                 {
                     name = "Jim",
                     gender = "Male",
                     age = 18,
-                    pets = new List<Pet>()
+                    pets = new List<PetDataModel>()
                     {
-                        new Pet
+                        new PetDataModel
 
                         {
                             name = "Docy",
                             type = "Cat"
                         },
-                        new Pet
+                        new PetDataModel
                         {
                             name = "Amy",
                             type = "Dog"
                         }
                     }
                 },
-                new Person()
+                new PersonDataModel()
                 {
                     name = "Kite",
                     gender = "Female",
                     age = 18,
-                    pets = new List<Pet>()
+                    pets = new List<PetDataModel>()
                     {
-                        new Pet
+                        new PetDataModel
 
                         {
                             name = "Mow",
@@ -137,22 +138,22 @@ namespace CatNames.Tests
         [Fact]
         public void ShouldOnlyPrintCats()
         {
-            var pet = new List<PetDto>()
+            var pet = new List<Pet>()
             {
-                new PetDto
+                new Pet
 
                 {
                     name = "Docy",
                     ownerGender = "Female",
                     type = "Cat"
                 },
-                new PetDto
+                new Pet
                 {
                     name = "Amy",
                     ownerGender = "Male",
                     type = "Dog"
                 },
-                new PetDto
+                new Pet
                 {
                     name = "Mow",
                     ownerGender = "Male",
@@ -169,22 +170,22 @@ namespace CatNames.Tests
         [Fact]
         public void ShouldListPetsFromPeople()
         {
-            var people = new List<Person>()
+            var people = new List<PersonDataModel>()
             {
-                new Person
+                new PersonDataModel
                 {
                     name = "Jim",
-                    pets = new List<Pet>
+                    pets = new List<PetDataModel>
                     {
-                        new Pet {name = "Amy", type = "dog"}
+                        new PetDataModel {name = "Amy", type = "dog"}
                     }
                 },
-                new Person
+                new PersonDataModel
                 {
                     name = "Kate",
-                    pets = new List<Pet>
+                    pets = new List<PetDataModel>
                     {
-                        new Pet {name = "Docy", type = "cat"}
+                        new PetDataModel {name = "Docy", type = "cat"}
                     }
                 }
             };
@@ -199,19 +200,19 @@ namespace CatNames.Tests
         [Fact]
         public void ShouldListAndIgnoreNullPetsFromPeople()
         {
-            var people = new List<Person>()
+            var people = new List<PersonDataModel>()
             {
-                new Person
+                new PersonDataModel
                 {
                     name = "Jim",
                     pets = null
                 },
-                new Person
+                new PersonDataModel
                 {
                     name = "Kate",
-                    pets = new List<Pet>
+                    pets = new List<PetDataModel>
                     {
-                        new Pet {name = "Docy", type = "cat"}
+                        new PetDataModel {name = "Docy", type = "cat"}
                     }
                 }
             };

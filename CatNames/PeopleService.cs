@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using CatNames.Models;
+using CatNames.Providers;
 
 namespace CatNames
 {
@@ -12,9 +13,9 @@ namespace CatNames
             _jsonFetcher = jsonFetcher;
         }
 
-        public List<Person> GetPeople()
+        public List<PersonDataModel> GetPeople()
         {
-            return _jsonFetcher.Fetch<List<Person>>("https://agl-developer-test.azurewebsites.net/people.json");
+            return _jsonFetcher.Fetch<List<PersonDataModel>>("https://agl-developer-test.azurewebsites.net/people.json");
         }
     }
 }

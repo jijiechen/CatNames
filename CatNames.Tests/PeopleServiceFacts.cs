@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CatNames.Providers;
 using Xunit;
 
 namespace CatNames.Tests

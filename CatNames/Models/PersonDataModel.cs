@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace CatNames
+namespace CatNames.Models
 {
-    public class Person
+    public class PersonDataModel
     {
         public string name { get; set; }
         public string gender { get; set; }
         public int age { get; set; }
-        public List<Pet> pets { get; set; }
+        public List<PetDataModel> pets { get; set; }
     }
 }

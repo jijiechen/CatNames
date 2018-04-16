@@ -1,3 +1,5 @@
+using CatNames.Providers;
+
 namespace CatNames.Tests
 {
     class StubRequester : IRequester

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using CatNames.Providers;
 
 namespace CatNames
 {
@@ -7,11 +8,9 @@ namespace CatNames
     {
         static void Main(string[] args)
         {
-            var requester = new WebRequester();
-            var fetcher = new JsonFetcher(requester);
-            
-            var peopleService = new PeopleService(fetcher);
-            var people = peopleService.GetPeople();
+            var fetcher = new JsonFetcher(new WebRequester());
+
+            var people = new PeopleService(fetcher).GetPeople();
             var pets = PetService.ListPets(people);
             var printedPets = PetService.PrintPets(pets);
                 

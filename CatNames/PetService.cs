@@ -2,43 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CatNames.Models;
 
 namespace CatNames
 {
 
     public class PetService
     {
-        static PetDto ToDto(Pet pet, Person person)
+        static Pet ToDto(PetDataModel petDataModel, PersonDataModel personDataModel)
         {
-            return new PetDto()
+            return new Pet()
             {
-                name = pet.name,
-                type = pet.type,
-                ownerGender = person.gender
+                name = petDataModel.name,
+                type = petDataModel.type,
+                ownerGender = personDataModel.gender
             };
         }
         
-        static List<PetDto> ListPetAsDtos(Person person)
+        static List<Pet> ListPetAsDtos(PersonDataModel personDataModel)
         {
-            return (person.pets ?? new List<Pet>())
-                .Select(pet => ToDto(pet, person))
+            return (personDataModel.pets ?? new List<PetDataModel>())
+                .Select(pet => ToDto(pet, personDataModel))
                 .ToList();
         }
 
         
-        public static List<PetDto> ListPets(List<Person> people)
+        public static List<Pet> ListPets(List<PersonDataModel> people)
         {
             return people
                 .SelectMany(ListPetAsDtos)
                 .ToList();
         }
         
-        public static string PrintOwner(PetDto pet)
+        public static string PrintPet(Pet pet)
         {
             return string.Format($"  • {pet.name}");
         }
 
-        public static string PrintPets(List<PetDto> pets)
+        public static string PrintPets(List<Pet> pets)
         {
             var groups = pets
                 .Where(pet => pet.type == "Cat")
@@ -50,7 +51,7 @@ namespace CatNames
                 {
                     return string.Concat(petGroup.Key, 
                         Environment.NewLine,
-                        string.Join(Environment.NewLine, petGroup.OrderBy(pet => pet.name).Select(PrintOwner)));
+                        string.Join(Environment.NewLine, petGroup.OrderBy(pet => pet.name).Select(PrintPet)));
                 });
             
             return String.Join(Environment.NewLine, groupedItems);

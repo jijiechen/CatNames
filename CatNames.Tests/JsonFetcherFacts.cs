@@ -1,3 +1,4 @@
+using CatNames.Providers;
 using Xunit;
 
 namespace CatNames.Tests

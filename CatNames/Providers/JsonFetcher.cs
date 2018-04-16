@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CatNames
+namespace CatNames.Providers
 {
     public class JsonFetcher
     {
