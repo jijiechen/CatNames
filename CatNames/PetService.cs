@@ -30,7 +30,6 @@ namespace CatNames
         {
             return people
                 .SelectMany(ListPetAsDtos)
-                .OrderBy(pet => pet.name)
                 .ToList();
         }
         
@@ -46,11 +45,13 @@ namespace CatNames
                 .GroupBy(pet => pet.ownerGender);
             
             var outputBuilder = new StringBuilder();
-            groups.ToList()
+            groups
+                .OrderByDescending(group => group.Key)
+                .ToList()
                 .ForEach(petGroup =>
                 {
                     outputBuilder.AppendLine(petGroup.Key);
-                    outputBuilder.Append(string.Join(Environment.NewLine, petGroup.Select(PrintOwner)));
+                    outputBuilder.Append(string.Join(Environment.NewLine, petGroup.OrderBy(pet => pet.name).Select(PrintOwner)));
                 });
             
             return outputBuilder.ToString();

@@ -40,7 +40,7 @@ namespace CatNames.Tests
         
         
         [Fact]
-        public void ShouldPrintMultiplePetsWithSameOwnerGender()
+        public void ShouldPrintMultiplePetsInalphabeticalOrderWithSameOwnerGender()
         {
             var pet = new List<PetDto>()
             {
@@ -87,8 +87,8 @@ namespace CatNames.Tests
                 }
             };
             
-            Assert.Equal("Female" + Environment.NewLine + "  • Amy"
-                         + "Male" + Environment.NewLine + "  • Docy", PetService.PrintPets(pet));
+            Assert.Equal("Male" + Environment.NewLine + "  • Amy"
+                         + "Female" + Environment.NewLine + "  • Docy", PetService.PrintPets(pet));
         }
                      
         [Fact]
@@ -120,8 +120,8 @@ namespace CatNames.Tests
                 }
             };
             
-            Assert.Equal("Female" + Environment.NewLine + "  • Docy"
-                         + "Male" + Environment.NewLine + "  • Mow", PetService.PrintPets(pet));
+            Assert.Equal("Male" + Environment.NewLine + "  • Mow"
+                + "Female" + Environment.NewLine + "  • Docy", PetService.PrintPets(pet));
         }
         
         
@@ -155,38 +155,5 @@ namespace CatNames.Tests
             Assert.Equal("Docy", pets[1].name);
         }
         
-        
-        [Fact]
-        public void ShouldListPetsInalphabeticalOrder()
-        {
-            var people = new List<Person>()
-            {
-                new Person
-                {
-                    name = "Jim",
-                    pets = new List<Pet>
-                    {
-                        new Pet {name = "Lovely", type = "dog"}
-                    }
-                },
-                new Person
-                {
-                    name = "Kate",
-                    pets = new List<Pet>
-                    {
-                        new Pet {name = "Docy", type = "cat"}
-                    }
-                }
-            };
-            
-            var pets = PetService.ListPets(people);
-            Assert.Equal(2, pets.Count);
-            
-            Assert.Equal("Docy", pets[0].name);
-            Assert.Equal("Kate", pets[0].ownerName);
-            
-            Assert.Equal("Lovely", pets[1].name);
-            Assert.Equal("Jim", pets[1].ownerName);
-        }
     }
 }
