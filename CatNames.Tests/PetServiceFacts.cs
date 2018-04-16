@@ -16,7 +16,7 @@ namespace CatNames.Tests
                 type = "Cat"
             };
             
-            Assert.Equal("  • Docy", PetService.PrintPet(pet));
+            Assert.Equal("  • Docy", pet.ToString());
         }
         
         

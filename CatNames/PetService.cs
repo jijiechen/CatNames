@@ -9,7 +9,7 @@ namespace CatNames
 
     public class PetService
     {
-        static Pet ToDto(PetDataModel petDataModel, PersonDataModel personDataModel)
+        static Pet ToPet(PetDataModel petDataModel, PersonDataModel personDataModel)
         {
             return new Pet()
             {
@@ -19,10 +19,10 @@ namespace CatNames
             };
         }
         
-        static List<Pet> ListPetAsDtos(PersonDataModel personDataModel)
+        static List<Pet> ListPets(PersonDataModel personDataModel)
         {
             return (personDataModel.pets ?? new List<PetDataModel>())
-                .Select(pet => ToDto(pet, personDataModel))
+                .Select(pet => ToPet(pet, personDataModel))
                 .ToList();
         }
 
@@ -30,15 +30,10 @@ namespace CatNames
         public static List<Pet> ListPets(List<PersonDataModel> people)
         {
             return people
-                .SelectMany(ListPetAsDtos)
+                .SelectMany(ListPets)
                 .ToList();
         }
         
-        public static string PrintPet(Pet pet)
-        {
-            return string.Format($"  • {pet.name}");
-        }
-
         public static string PrintPets(List<Pet> pets)
         {
             var groups = pets
@@ -51,7 +46,10 @@ namespace CatNames
                 {
                     return string.Concat(petGroup.Key, 
                         Environment.NewLine,
-                        string.Join(Environment.NewLine, petGroup.OrderBy(pet => pet.name).Select(PrintPet)));
+                        string.Join(Environment.NewLine, 
+                            petGroup
+                            .OrderBy(pet => pet.name)
+                            .Select(pet => pet.ToString())));
                 });
             
             return String.Join(Environment.NewLine, groupedItems);
