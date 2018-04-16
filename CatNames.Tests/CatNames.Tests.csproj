@@ -1,15 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170628-02" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\CatNames\CatNames.csproj">
+      <Project>{212FBE99-44F8-4055-99DF-9BDD105633F9}</Project>
+      <Name>CatNames</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
