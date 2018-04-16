@@ -41,9 +41,16 @@ namespace CatNames
 
         public static string PrintPets(List<PetDto> pets)
         {
+            var groups = pets.GroupBy(pet => pet.gender);
+            
             var outputBuilder = new StringBuilder();
-            outputBuilder.AppendLine(pets[0].gender);
-            outputBuilder.Append(string.Join(Environment.NewLine, pets.Select(PrintOwner)));
+            groups.ToList()
+                .ForEach(petGroup =>
+                {
+                    outputBuilder.AppendLine(petGroup.Key);
+                    outputBuilder.Append(string.Join(Environment.NewLine, petGroup.Select(PrintOwner)));
+                });
+            
             return outputBuilder.ToString();
         }
     }

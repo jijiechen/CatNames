@@ -39,7 +39,57 @@ namespace CatNames.Tests
         }     
         
         
-        
+        [Fact]
+        public void ShouldPrintMultiplePetOwnersWithSameGender()
+        {
+            var pet = new List<PetDto>()
+            {
+                new PetDto
+
+                {
+                    name = "Docy",
+                    owner = "Kate",
+                    gender = "Female",
+                    type = "Cat"
+                },
+                new PetDto
+                {
+                    name = "Amy",
+                    owner = "Mary",
+                    gender = "Female",
+                    type = "Dog"
+                }
+            };
+            
+            Assert.Equal("Female" + Environment.NewLine + "  • Kate"
+                         + Environment.NewLine + "  • Mary", PetService.PrintPets(pet));
+        }
+                
+        [Fact]
+        public void ShouldPrintMultiplePetOwnersWithDifferentGenders()
+        {
+            var pet = new List<PetDto>()
+            {
+                new PetDto
+
+                {
+                    name = "Docy",
+                    owner = "Kate",
+                    gender = "Female",
+                    type = "Cat"
+                },
+                new PetDto
+                {
+                    name = "Amy",
+                    owner = "Jim",
+                    gender = "Male",
+                    type = "Dog"
+                }
+            };
+            
+            Assert.Equal("Female" + Environment.NewLine + "  • Kate"
+                         + "Male" + Environment.NewLine + "  • Jim", PetService.PrintPets(pet));
+        }
         
         
         [Fact]
