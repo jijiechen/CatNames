@@ -1,7 +1,7 @@
 The CatNames Practice
 ------
 
-[![Build status](https://ci.appveyor.com/api/projects/status/rna39cro23b885b9?svg=true)](https://ci.appveyor.com/project/jijiechen/catnames)
+[![Build status](https://ci.appveyor.com/api/projects/status/uj2tuimvj69jms5w?svg=true)](https://ci.appveyor.com/project/jijiechen/catnames)
 [![Build Status](https://travis-ci.org/jijiechen/CatNames.svg)](https://travis-ci.org/jijiechen/CatNames)
 
 
