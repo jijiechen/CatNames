@@ -14,13 +14,14 @@ namespace CatNames
             {
                 name = pet.name,
                 type = pet.type,
-                ownerName = person.name
+                ownerName = person.name,
+                ownerGender = person.gender
             };
         }
         
         static List<PetDto> ListPetAsDtos(Person person)
         {
-            return person.pets
+            return (person.pets ?? new List<Pet>())
                 .Select(pet => ToDto(pet, person))
                 .ToList();
         }
@@ -44,17 +45,16 @@ namespace CatNames
                 .Where(pet => pet.type == "Cat")
                 .GroupBy(pet => pet.ownerGender);
             
-            var outputBuilder = new StringBuilder();
-            groups
+            var groupedItems = groups
                 .OrderByDescending(group => group.Key)
-                .ToList()
-                .ForEach(petGroup =>
+                .Select(petGroup =>
                 {
-                    outputBuilder.AppendLine(petGroup.Key);
-                    outputBuilder.Append(string.Join(Environment.NewLine, petGroup.OrderBy(pet => pet.name).Select(PrintOwner)));
+                    return string.Concat(petGroup.Key, 
+                        Environment.NewLine,
+                        string.Join(Environment.NewLine, petGroup.OrderBy(pet => pet.name).Select(PrintOwner)));
                 });
             
-            return outputBuilder.ToString();
+            return String.Join(Environment.NewLine, groupedItems);
         }
     }
 }

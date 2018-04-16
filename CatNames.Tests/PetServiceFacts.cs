@@ -23,7 +23,7 @@ namespace CatNames.Tests
         [Fact]
         public void ShouldPrintPetOwnerGender()
         {
-            var pet = new List<PetDto>()
+            var pets = new List<PetDto>()
             {
                 new PetDto
 
@@ -35,14 +35,14 @@ namespace CatNames.Tests
                 }
             };
             
-            Assert.Equal("Female" + Environment.NewLine + "  • Docy", PetService.PrintPets(pet));
+            Assert.Equal("Female" + Environment.NewLine + "  • Docy", PetService.PrintPets(pets));
         }     
         
         
         [Fact]
         public void ShouldPrintMultiplePetsInalphabeticalOrderWithSameOwnerGender()
         {
-            var pet = new List<PetDto>()
+            var pets = new List<PetDto>()
             {
                 new PetDto
 
@@ -62,13 +62,13 @@ namespace CatNames.Tests
             };
             
             Assert.Equal("Female" + Environment.NewLine + "  • Amy"
-                         + Environment.NewLine + "  • Docy", PetService.PrintPets(pet));
+                         + Environment.NewLine + "  • Docy", PetService.PrintPets(pets));
         }
                 
         [Fact]
         public void ShouldPrintMultiplePetsWithDifferentOwnerGenders()
         {
-            var pet = new List<PetDto>()
+            var pets = new List<PetDto>()
             {
                 new PetDto
 
@@ -88,7 +88,56 @@ namespace CatNames.Tests
             };
             
             Assert.Equal("Male" + Environment.NewLine + "  • Amy"
-                         + "Female" + Environment.NewLine + "  • Docy", PetService.PrintPets(pet));
+                         + Environment.NewLine
+                         + "Female" + Environment.NewLine + "  • Docy", PetService.PrintPets(pets));
+        }
+             
+        [Fact]
+        public void ShouldPrintMultiplePetsFromPeople()
+        {
+            var people = new List<Person>()
+            {
+                new Person()
+                {
+                    name = "Jim",
+                    gender = "Male",
+                    age = 18,
+                    pets = new List<Pet>()
+                    {
+                        new Pet
+
+                        {
+                            name = "Docy",
+                            type = "Cat"
+                        },
+                        new Pet
+                        {
+                            name = "Amy",
+                            type = "Dog"
+                        }
+                    }
+                },
+                new Person()
+                {
+                    name = "Kite",
+                    gender = "Female",
+                    age = 18,
+                    pets = new List<Pet>()
+                    {
+                        new Pet
+
+                        {
+                            name = "Mow",
+                            type = "Cat"
+                        }
+                    }
+                }
+            };
+
+            var pets = PetService.ListPets(people);
+            Assert.Equal("Male" + Environment.NewLine + "  • Docy"
+                         + Environment.NewLine 
+                         + "Female" + Environment.NewLine + "  • Mow", PetService.PrintPets(pets));
         }
                      
         [Fact]
@@ -121,12 +170,13 @@ namespace CatNames.Tests
             };
             
             Assert.Equal("Male" + Environment.NewLine + "  • Mow"
+                         + Environment.NewLine 
                 + "Female" + Environment.NewLine + "  • Docy", PetService.PrintPets(pet));
         }
         
         
         [Fact]
-        public void ShouldListPetsWithPeople()
+        public void ShouldListPetsFromPeople()
         {
             var people = new List<Person>()
             {
@@ -153,6 +203,32 @@ namespace CatNames.Tests
             Assert.Equal(2, pets.Count);
             Assert.Equal("Amy", pets[0].name);
             Assert.Equal("Docy", pets[1].name);
+        }
+          
+        [Fact]
+        public void ShouldListAndIgnoreNullPetsFromPeople()
+        {
+            var people = new List<Person>()
+            {
+                new Person
+                {
+                    name = "Jim",
+                    pets = null
+                },
+                new Person
+                {
+                    name = "Kate",
+                    pets = new List<Pet>
+                    {
+                        new Pet {name = "Docy", type = "cat"}
+                    }
+                }
+            };
+            
+
+            var pets = PetService.ListPets(people);
+            Assert.Equal(1, pets.Count);
+            Assert.Equal("Docy", pets[0].name);
         }
         
     }
