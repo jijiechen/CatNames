@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Collections.Immutable;
 using System.Net;
+using System.Text;
 using Autofac;
-using Autofac.Core;
 using CatNames.Providers;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 
 namespace CatNames
 {
@@ -11,8 +13,17 @@ namespace CatNames
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Console application mode:");
             Console.WriteLine(PrintedPetsInConsole());
+            
+            Console.WriteLine();
+            Console.WriteLine("Console application with dependency injection enabled:");
             Console.WriteLine(PrintedPetsWithDependencyInjection());
+            
+            Console.WriteLine();
+            var httpPort = 5000;
+            Console.WriteLine("Starting a web server at http://localhost:" + httpPort);
+            PrintedPetsInWebAPI(httpPort);
         }
 
         public static string PrintedPetsInConsole()
@@ -42,6 +53,18 @@ namespace CatNames
                 var printedPets = PetService.PrintPets(pets);
                 return printedPets;
             }
+        }
+
+        public static void PrintedPetsInWebAPI(int httpPort)
+        {
+            WebHost.Start(
+                    "http://localhost:" + httpPort,
+                    async ctx =>
+                    {
+                        ctx.Response.ContentType = "text/plain; charset=utf-8";
+                        await ctx.Response.WriteAsync(PrintedPetsInConsole(), Encoding.UTF8);
+                    })
+                .WaitForShutdown();
         }
     }
 
