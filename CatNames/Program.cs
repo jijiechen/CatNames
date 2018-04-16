@@ -6,7 +6,15 @@ namespace CatNames
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
+        }
+    }
+
+    internal class WebRequester : IRequester
+    {
+        public string Request(string uri)
+        {
+            throw new NotImplementedException();
         }
     }
 }

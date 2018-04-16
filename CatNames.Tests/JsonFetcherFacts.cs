@@ -1,9 +1,8 @@
-using System;
 using Xunit;
 
 namespace CatNames.Tests
 {
-    public class WebResourceFacts
+    public class JsonFetcherFacts
     {
         [Fact]
         public void ShouldRequestJsonData()
@@ -20,7 +19,6 @@ namespace CatNames.Tests
         {
             var requester = new StubRequester("{name: \"hello\"}");
             var jsonFetcher = new JsonFetcher(requester);
-            
             
             var obj = jsonFetcher.Fetch<Thing>("url://dummy");
             Assert.NotNull(obj);
