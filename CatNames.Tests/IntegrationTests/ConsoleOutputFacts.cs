@@ -9,7 +9,7 @@ namespace CatNames.Tests.IntegrationTests
         public void ShouldOutputCorrectlyUsingOnlineJson()
         {
             var output = Program.PrintedPetsInConsole();
-            Assert.Equal(@"Male
+            output.AssertEqual(@"Male
   • Garfield
   • Jim
   • Max
@@ -17,8 +17,7 @@ namespace CatNames.Tests.IntegrationTests
 Female
   • Garfield
   • Simba
-  • Tabby", output);
-            
+  • Tabby");
         }
     }
 }

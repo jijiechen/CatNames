@@ -17,7 +17,7 @@ namespace CatNames.Tests.IntegrationTests
             
             var output = new WebClient().DownloadString("http://localhost:" + port);
             
-            Assert.Equal(@"Male
+            output.AssertEqual(@"Male
   • Garfield
   • Jim
   • Max
@@ -25,7 +25,7 @@ namespace CatNames.Tests.IntegrationTests
 Female
   • Garfield
   • Simba
-  • Tabby", output);
+  • Tabby");
         }
     }
 }

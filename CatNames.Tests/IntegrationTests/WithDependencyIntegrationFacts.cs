@@ -10,7 +10,7 @@ namespace CatNames.Tests.IntegrationTests
         public void ShouldOutputCorrectlyUsingOnlineJson()
         {
             var output = Program.PrintedPetsWithDependencyInjection();
-            Assert.Equal(@"Male
+            output.AssertEqual(@"Male
   • Garfield
   • Jim
   • Max
@@ -18,8 +18,7 @@ namespace CatNames.Tests.IntegrationTests
 Female
   • Garfield
   • Simba
-  • Tabby", output);
-            
+  • Tabby");
         }
 
 
@@ -32,8 +31,8 @@ Female
             var output = Program.PrintedPetsWithDependencyInjection(
                 builder => builder.RegisterInstance(overridenRequester).As<IRequester>());
 
-            Assert.Equal(@"Female
-  • Kitty", output);
+            output.AssertEqual(@"Female
+  • Kitty");
 
         }
     }
