@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace CatNames
 {
     public class JsonFetcher
@@ -11,8 +13,8 @@ namespace CatNames
 
         public T Fetch<T>(string uri)
         {
-            this._requester.Request(uri);
-            return default(T);
+            var response = this._requester.Request(uri);
+            return JsonConvert.DeserializeObject<T>(response);
         }
     }
 }
