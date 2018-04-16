@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using CatNames.Models;
 
-namespace CatNames
+namespace CatNames.Services
 {
 
     public class PetService

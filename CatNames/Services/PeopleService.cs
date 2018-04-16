@@ -2,7 +2,7 @@
 using CatNames.Models;
 using CatNames.Providers;
 
-namespace CatNames
+namespace CatNames.Services
 {
     public class PeopleService
     {

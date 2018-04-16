@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CatNames.Models;
+using CatNames.Services;
 using Xunit;
 
 namespace CatNames.Tests

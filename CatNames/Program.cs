@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Net;
 using System.Text;
 using Autofac;
 using CatNames.Providers;
+using CatNames.Services;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -65,14 +65,6 @@ namespace CatNames
                         await ctx.Response.WriteAsync(PrintedPetsInConsole(), Encoding.UTF8);
                     })
                 .WaitForShutdown();
-        }
-    }
-
-    class WebRequester : IRequester
-    {
-        public string Request(string uri)
-        {
-            return new WebClient().DownloadString(uri);
         }
     }
 }
