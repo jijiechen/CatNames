@@ -32,17 +32,17 @@ namespace CatNames.Tests
         [Fact]
         public void ShouldListPetsWithPeople()
         {
-            var people = new List<People>()
+            var people = new List<Person>()
             {
-                new People
+                new Person
                 {
                     name = "Jim",
                     pets = new List<Pet>
                     {
-                        new Pet {name = "Lovely", type = "dog"}
+                        new Pet {name = "Amy", type = "dog"}
                     }
                 },
-                new People
+                new Person
                 {
                     name = "Kate",
                     pets = new List<Pet>
@@ -56,8 +56,40 @@ namespace CatNames.Tests
 
             var pets = peopleService.ListPets(people);
             Assert.Equal(2, pets.Count);
-            Assert.Equal("Lovely", pets[0].name);
+            Assert.Equal("Amy", pets[0].name);
             Assert.Equal("Docy", pets[1].name);
+        }
+        
+        
+        [Fact]
+        public void ShouldListPetsInalphabeticalOrder()
+        {
+            var people = new List<Person>()
+            {
+                new Person
+                {
+                    name = "Jim",
+                    pets = new List<Pet>
+                    {
+                        new Pet {name = "Lovely", type = "dog"}
+                    }
+                },
+                new Person
+                {
+                    name = "Kate",
+                    pets = new List<Pet>
+                    {
+                        new Pet {name = "Docy", type = "cat"}
+                    }
+                }
+            };
+            
+            var peopleService = new PeopleService(jsonFetcher: null);
+
+            var pets = peopleService.ListPets(people);
+            Assert.Equal(2, pets.Count);
+            Assert.Equal("Docy", pets[0].name);
+            Assert.Equal("Lovely", pets[1].name);
         }
     }
 }

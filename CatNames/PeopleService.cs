@@ -12,14 +12,17 @@ namespace CatNames
             _jsonFetcher = jsonFetcher;
         }
 
-        public List<People> GetPeople()
+        public List<Person> GetPeople()
         {
-            return _jsonFetcher.Fetch<List<People>>("https://agl-developer-test.azurewebsites.net/people.json");
+            return _jsonFetcher.Fetch<List<Person>>("https://agl-developer-test.azurewebsites.net/people.json");
         }
 
-        public List<Pet> ListPets(List<People> people)
+        public List<Pet> ListPets(List<Person> people)
         {
-            return people.SelectMany(person => person.pets).ToList();
+            return people
+                .SelectMany(person => person.pets)
+                .OrderBy(pet => pet.name)
+                .ToList();
         }
     }
 }
