@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace CatNames.Tests
@@ -17,6 +18,29 @@ namespace CatNames.Tests
             
             Assert.Equal("  • Kate", PetService.PrintOwner(pet));
         }
+        
+        
+        [Fact]
+        public void ShouldPrintPetOwnerGender()
+        {
+            var pet = new List<PetDto>()
+            {
+                new PetDto
+
+                {
+                    name = "Docy",
+                    owner = "Kate",
+                    gender = "Female",
+                    type = "Cat"
+                }
+            };
+            
+            Assert.Equal("Female" + Environment.NewLine + "  • Kate", PetService.PrintPets(pet));
+        }     
+        
+        
+        
+        
         
         [Fact]
         public void ShouldListPetsWithPeople()

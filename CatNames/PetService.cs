@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace CatNames
 {
@@ -35,6 +37,14 @@ namespace CatNames
         public static string PrintOwner(PetDto pet)
         {
             return string.Format($"  • {pet.owner}");
+        }
+
+        public static string PrintPets(List<PetDto> pets)
+        {
+            var outputBuilder = new StringBuilder();
+            outputBuilder.AppendLine(pets[0].gender);
+            outputBuilder.Append(string.Join(Environment.NewLine, pets.Select(PrintOwner)));
+            return outputBuilder.ToString();
         }
     }
 }
