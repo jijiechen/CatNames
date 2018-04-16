@@ -88,8 +88,12 @@ namespace CatNames.Tests
 
             var pets = peopleService.ListPets(people);
             Assert.Equal(2, pets.Count);
+            
             Assert.Equal("Docy", pets[0].name);
+            Assert.Equal("Kate", pets[0].owner);
+            
             Assert.Equal("Lovely", pets[1].name);
+            Assert.Equal("Jim", pets[1].owner);
         }
     }
 }

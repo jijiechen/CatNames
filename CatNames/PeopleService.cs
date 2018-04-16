@@ -20,7 +20,10 @@ namespace CatNames
         public List<Pet> ListPets(List<Person> people)
         {
             return people
-                .SelectMany(person => person.pets)
+                .SelectMany(person =>
+                {
+                    return person.pets.Select(pet => new Pet {name = pet.name, owner = person.name, type = pet.type});
+                })
                 .OrderBy(pet => pet.name)
                 .ToList();
         }
