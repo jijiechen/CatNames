@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System.Collections.Generic;
+using Xunit;
 
 namespace CatNames.Tests
 {
@@ -25,6 +26,38 @@ namespace CatNames.Tests
             var people = peopleService.GetPeople();
             Assert.Equal(1, people.Count);
             Assert.Equal("Kate", people[0].name);
+        }
+        
+        
+        [Fact]
+        public void ShouldListPetsWithPeople()
+        {
+            var people = new List<People>()
+            {
+                new People
+                {
+                    name = "Jim",
+                    pets = new List<Pet>
+                    {
+                        new Pet {name = "Lovely", type = "dog"}
+                    }
+                },
+                new People
+                {
+                    name = "Kate",
+                    pets = new List<Pet>
+                    {
+                        new Pet {name = "Docy", type = "cat"}
+                    }
+                }
+            };
+            
+            var peopleService = new PeopleService(jsonFetcher: null);
+
+            var pets = peopleService.ListPets(people);
+            Assert.Equal(2, pets.Count);
+            Assert.Equal("Lovely", pets[0].name);
+            Assert.Equal("Docy", pets[1].name);
         }
     }
 }

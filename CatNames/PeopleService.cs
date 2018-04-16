@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace CatNames
 {
@@ -14,6 +15,11 @@ namespace CatNames
         public List<People> GetPeople()
         {
             return _jsonFetcher.Fetch<List<People>>("https://agl-developer-test.azurewebsites.net/people.json");
+        }
+
+        public List<Pet> ListPets(List<People> people)
+        {
+            return people.SelectMany(person => person.pets).ToList();
         }
     }
 }
