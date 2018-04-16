@@ -17,13 +17,10 @@ namespace CatNames
             return _jsonFetcher.Fetch<List<Person>>("https://agl-developer-test.azurewebsites.net/people.json");
         }
 
-        public List<Pet> ListPets(List<Person> people)
+        public List<PetDto> ListPets(List<Person> people)
         {
             return people
-                .SelectMany(person =>
-                {
-                    return person.pets.Select(pet => new Pet {name = pet.name, owner = person.name, type = pet.type});
-                })
+                .SelectMany(PetService.ListPetAsDtos)
                 .OrderBy(pet => pet.name)
                 .ToList();
         }
