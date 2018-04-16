@@ -12,7 +12,7 @@ namespace CatNames.Tests
             var pet = new PetDto
             {
                 name = "Docy",
-                owner = "Kate",
+                ownerName = "Kate",
                 type = "Cat"
             };
             
@@ -29,8 +29,8 @@ namespace CatNames.Tests
 
                 {
                     name = "Docy",
-                    owner = "Kate",
-                    gender = "Female",
+                    ownerName = "Kate",
+                    ownerGender = "Female",
                     type = "Cat"
                 }
             };
@@ -48,15 +48,15 @@ namespace CatNames.Tests
 
                 {
                     name = "Docy",
-                    owner = "Kate",
-                    gender = "Female",
+                    ownerName = "Kate",
+                    ownerGender = "Female",
                     type = "Cat"
                 },
                 new PetDto
                 {
                     name = "Amy",
-                    owner = "Mary",
-                    gender = "Female",
+                    ownerName = "Mary",
+                    ownerGender = "Female",
                     type = "Dog"
                 }
             };
@@ -74,15 +74,15 @@ namespace CatNames.Tests
 
                 {
                     name = "Docy",
-                    owner = "Kate",
-                    gender = "Female",
+                    ownerName = "Kate",
+                    ownerGender = "Female",
                     type = "Cat"
                 },
                 new PetDto
                 {
                     name = "Amy",
-                    owner = "Jim",
-                    gender = "Male",
+                    ownerName = "Jim",
+                    ownerGender = "Male",
                     type = "Dog"
                 }
             };
@@ -150,10 +150,10 @@ namespace CatNames.Tests
             Assert.Equal(2, pets.Count);
             
             Assert.Equal("Docy", pets[0].name);
-            Assert.Equal("Kate", pets[0].owner);
+            Assert.Equal("Kate", pets[0].ownerName);
             
             Assert.Equal("Lovely", pets[1].name);
-            Assert.Equal("Jim", pets[1].owner);
+            Assert.Equal("Jim", pets[1].ownerName);
         }
     }
 }

@@ -8,9 +8,10 @@
     
     public class PetDto
     {
-        public string owner { get; set; }
         public string name { get; set; }
         public string type { get; set; }
-        public string gender { get; set; }
+        
+        public string ownerName { get; set; }
+        public string ownerGender { get; set; }
     }
 }

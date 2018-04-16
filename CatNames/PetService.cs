@@ -14,7 +14,7 @@ namespace CatNames
             {
                 name = pet.name,
                 type = pet.type,
-                owner = person.name
+                ownerName = person.name
             };
         }
         
@@ -36,12 +36,12 @@ namespace CatNames
         
         public static string PrintOwner(PetDto pet)
         {
-            return string.Format($"  • {pet.owner}");
+            return string.Format($"  • {pet.ownerName}");
         }
 
         public static string PrintPets(List<PetDto> pets)
         {
-            var groups = pets.GroupBy(pet => pet.gender);
+            var groups = pets.GroupBy(pet => pet.ownerGender);
             
             var outputBuilder = new StringBuilder();
             groups.ToList()
