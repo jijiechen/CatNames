@@ -36,7 +36,7 @@ namespace CatNames
         
         public static string PrintOwner(PetDto pet)
         {
-            return string.Format($"  • {pet.ownerName}");
+            return string.Format($"  • {pet.name}");
         }
 
         public static string PrintPets(List<PetDto> pets)

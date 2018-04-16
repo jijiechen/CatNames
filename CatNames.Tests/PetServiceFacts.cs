@@ -7,7 +7,7 @@ namespace CatNames.Tests
     public class PetServiceFacts
     {
         [Fact]
-        public void ShouldPrintPetOwner()
+        public void ShouldPrintPet()
         {
             var pet = new PetDto
             {
@@ -16,7 +16,7 @@ namespace CatNames.Tests
                 type = "Cat"
             };
             
-            Assert.Equal("  • Kate", PetService.PrintOwner(pet));
+            Assert.Equal("  • Docy", PetService.PrintOwner(pet));
         }
         
         
@@ -35,12 +35,12 @@ namespace CatNames.Tests
                 }
             };
             
-            Assert.Equal("Female" + Environment.NewLine + "  • Kate", PetService.PrintPets(pet));
+            Assert.Equal("Female" + Environment.NewLine + "  • Docy", PetService.PrintPets(pet));
         }     
         
         
         [Fact]
-        public void ShouldPrintMultiplePetOwnersWithSameGender()
+        public void ShouldPrintMultiplePetsWithSameOwnerGender()
         {
             var pet = new List<PetDto>()
             {
@@ -61,12 +61,12 @@ namespace CatNames.Tests
                 }
             };
             
-            Assert.Equal("Female" + Environment.NewLine + "  • Kate"
-                         + Environment.NewLine + "  • Mary", PetService.PrintPets(pet));
+            Assert.Equal("Female" + Environment.NewLine + "  • Amy"
+                         + Environment.NewLine + "  • Docy", PetService.PrintPets(pet));
         }
                 
         [Fact]
-        public void ShouldPrintMultiplePetOwnersWithDifferentGenders()
+        public void ShouldPrintMultiplePetsWithDifferentOwnerGenders()
         {
             var pet = new List<PetDto>()
             {
@@ -87,12 +87,12 @@ namespace CatNames.Tests
                 }
             };
             
-            Assert.Equal("Female" + Environment.NewLine + "  • Kate"
-                         + "Male" + Environment.NewLine + "  • Jim", PetService.PrintPets(pet));
+            Assert.Equal("Female" + Environment.NewLine + "  • Amy"
+                         + "Male" + Environment.NewLine + "  • Docy", PetService.PrintPets(pet));
         }
                      
         [Fact]
-        public void ShouldOnlyPrintOwnersOfCats()
+        public void ShouldOnlyPrintCats()
         {
             var pet = new List<PetDto>()
             {
@@ -120,8 +120,8 @@ namespace CatNames.Tests
                 }
             };
             
-            Assert.Equal("Female" + Environment.NewLine + "  • Kate"
-                         + "Male" + Environment.NewLine + "  • David", PetService.PrintPets(pet));
+            Assert.Equal("Female" + Environment.NewLine + "  • Docy"
+                         + "Male" + Environment.NewLine + "  • Mow", PetService.PrintPets(pet));
         }
         
         
