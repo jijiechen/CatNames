@@ -16,13 +16,22 @@ namespace CatNames
             };
         }
         
-        public static List<PetDto> ListPetAsDtos(Person person)
+        static List<PetDto> ListPetAsDtos(Person person)
         {
             return person.pets
                 .Select(pet => ToDto(pet, person))
                 .ToList();
         }
 
+        
+        public static List<PetDto> ListPets(List<Person> people)
+        {
+            return people
+                .SelectMany(ListPetAsDtos)
+                .OrderBy(pet => pet.name)
+                .ToList();
+        }
+        
         public static string PrintOwner(PetDto pet)
         {
             return string.Format($"  • {pet.owner}");
