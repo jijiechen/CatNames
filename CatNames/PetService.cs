@@ -41,7 +41,9 @@ namespace CatNames
 
         public static string PrintPets(List<PetDto> pets)
         {
-            var groups = pets.GroupBy(pet => pet.ownerGender);
+            var groups = pets
+                .Where(pet => pet.type == "Cat")
+                .GroupBy(pet => pet.ownerGender);
             
             var outputBuilder = new StringBuilder();
             groups.ToList()

@@ -57,7 +57,7 @@ namespace CatNames.Tests
                     name = "Amy",
                     ownerName = "Mary",
                     ownerGender = "Female",
-                    type = "Dog"
+                    type = "Cat"
                 }
             };
             
@@ -83,12 +83,45 @@ namespace CatNames.Tests
                     name = "Amy",
                     ownerName = "Jim",
                     ownerGender = "Male",
-                    type = "Dog"
+                    type = "Cat"
                 }
             };
             
             Assert.Equal("Female" + Environment.NewLine + "  • Kate"
                          + "Male" + Environment.NewLine + "  • Jim", PetService.PrintPets(pet));
+        }
+                     
+        [Fact]
+        public void ShouldOnlyPrintOwnersOfCats()
+        {
+            var pet = new List<PetDto>()
+            {
+                new PetDto
+
+                {
+                    name = "Docy",
+                    ownerName = "Kate",
+                    ownerGender = "Female",
+                    type = "Cat"
+                },
+                new PetDto
+                {
+                    name = "Amy",
+                    ownerName = "Jim",
+                    ownerGender = "Male",
+                    type = "Dog"
+                },
+                new PetDto
+                {
+                    name = "Mow",
+                    ownerName = "David",
+                    ownerGender = "Male",
+                    type = "Cat"
+                }
+            };
+            
+            Assert.Equal("Female" + Environment.NewLine + "  • Kate"
+                         + "Male" + Environment.NewLine + "  • David", PetService.PrintPets(pet));
         }
         
         
