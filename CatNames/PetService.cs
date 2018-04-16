@@ -22,5 +22,10 @@ namespace CatNames
                 .Select(pet => ToDto(pet, person))
                 .ToList();
         }
+
+        public static string PrintOwner(PetDto pet)
+        {
+            return string.Format($"  • {pet.owner}");
+        }
     }
 }
