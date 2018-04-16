@@ -21,7 +21,7 @@ namespace CatNames.Tests
         [Fact]
         public void ShouldGetPeopleData()
         {
-            var requester = new StubRequester("[{\"name\":\"Kate\",\"gender\":\"Female\",\"age\":15,\"pets\":[{\"name\":\"Kitty\",\"type\":\"cat\"}]}]");
+            var requester = new StubRequester("[{\"name\":\"Kate\",\"gender\":\"Female\",\"age\":15,\"pets\":[{\"name\":\"Kitty\",\"type\":\"Cat\"}]}]");
             var peopleService = new PeopleService(new JsonFetcher(requester));
 
             var people = peopleService.GetPeople();
