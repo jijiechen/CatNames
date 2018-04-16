@@ -1,0 +1,30 @@
+language: csharp
+mono: none
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      env:
+        - ELECTRONIZE_OS_NAME=linux
+        - CONFIGURATION=Release
+    - os: osx
+      osx_image: xcode8.2
+      env:
+        - ELECTRONIZE_OS_NAME=darwin
+        - CONFIGURATION=Release
+            
+addons:
+  apt:
+    packages:
+    - libunwind8
+      
+
+dotnet: 2.1.4    # this is SDK version. See https://github.com/dotnet/core/blob/master/release-notes/download-archive.md
+solution: CatNames.sln
+  
+ 
+script:
+ - cd $TRAVIS_BUILD_DIR ; dotnet restore -r $TRAVIS_OS_NAME-x64
+ - cd $TRAVIS_BUILD_DIR/CatNames ; dotnet build
+ - cd $TRAVIS_BUILD_DIR/CatNames.Tests ; dotnet test

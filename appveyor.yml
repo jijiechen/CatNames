@@ -1,0 +1,13 @@
+os: Visual Studio 2017
+
+before_build:
+  - appveyor-retry dotnet restore
+
+build_script:
+  - cd %APPVEYOR_BUILD_FOLDER%\CatNames
+  - dotnet build
+  
+test_script:
+  - cd %APPVEYOR_BUILD_FOLDER%\CatNames.Tests
+  - dotnet test
+
