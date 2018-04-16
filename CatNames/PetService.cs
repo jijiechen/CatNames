@@ -14,7 +14,6 @@ namespace CatNames
             {
                 name = pet.name,
                 type = pet.type,
-                ownerName = person.name,
                 ownerGender = person.gender
             };
         }

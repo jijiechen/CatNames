@@ -12,7 +12,6 @@ namespace CatNames.Tests
             var pet = new PetDto
             {
                 name = "Docy",
-                ownerName = "Kate",
                 type = "Cat"
             };
             
@@ -29,7 +28,6 @@ namespace CatNames.Tests
 
                 {
                     name = "Docy",
-                    ownerName = "Kate",
                     ownerGender = "Female",
                     type = "Cat"
                 }
@@ -48,14 +46,12 @@ namespace CatNames.Tests
 
                 {
                     name = "Docy",
-                    ownerName = "Kate",
                     ownerGender = "Female",
                     type = "Cat"
                 },
                 new PetDto
                 {
                     name = "Amy",
-                    ownerName = "Mary",
                     ownerGender = "Female",
                     type = "Cat"
                 }
@@ -74,14 +70,12 @@ namespace CatNames.Tests
 
                 {
                     name = "Docy",
-                    ownerName = "Kate",
                     ownerGender = "Female",
                     type = "Cat"
                 },
                 new PetDto
                 {
                     name = "Amy",
-                    ownerName = "Jim",
                     ownerGender = "Male",
                     type = "Cat"
                 }
@@ -149,21 +143,18 @@ namespace CatNames.Tests
 
                 {
                     name = "Docy",
-                    ownerName = "Kate",
                     ownerGender = "Female",
                     type = "Cat"
                 },
                 new PetDto
                 {
                     name = "Amy",
-                    ownerName = "Jim",
                     ownerGender = "Male",
                     type = "Dog"
                 },
                 new PetDto
                 {
                     name = "Mow",
-                    ownerName = "David",
                     ownerGender = "Male",
                     type = "Cat"
                 }
